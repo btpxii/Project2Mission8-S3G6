@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewData["Title"] = "AddTask";
+}
+
+<div>
+    <form method="post">
+        <input asp-for="taskId" type="hidden" /> <br />
+
+        <label asp-for="task"> Task</label>
+        <input asp-for="task" />  <br />
+
+        <label asp-for="dueDate"> Due Date</label>
+        <input asp-for="dueDate" />  <br />
+
+        <label asp-for="quadrant">Quadrant</label>
+        <select asp-for="quadrant">
+            <option value="quadrant1">Quadrant 1</option>
+            <option value="quadrant2">Quadrant 2</option>
+            <option value="quadrant3">Quadrant 3</option>
+            <option value="quadrant4">Quadrant 4</option>
+        </select> <br />
+
+        <label asp-for="category">Category</label>
+        <select asp-for="category">
+            <option value="home">Home</option>
+            <option value="school">School</option>
+            <option value="work">Work</option>
+            <option value="church">Church</option>
+        </select> <br />
+
+        <label asp-for="completed">Completed</label>
+        <select asp-for="completed">
+            <option value="true"> True</option>
+            <option value="false"> False</option>
+        </select>  <br />
+
+        <button type="submit">Submit</button>
+
+    </form>
