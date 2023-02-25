@@ -1,0 +1,78 @@
+﻿@{
+    ViewData["Title"] = "Quadrant Page";
+}
+
+
+@*Make sure this is running only the incomplete tasks*@
+@{
+    var incompleteTasks = Model.Where(t => t.Completed == false).ToList();
+}
+
+@*Create the quadrant container*@
+<div class="container">
+    <h2>Stephen Covey's Time Management Matrix</h2>
+
+    @*  Display the tasks in four quadrants *@
+    @*Include the buttons for delete, edit, and complete*@
+    <div class="row">
+        <div class="col-sm-6 col-md-3">
+            <h4>Important and Urgent</h4>
+            @foreach (var task in incompleteTasks.Where(t => t.Quadrant == 1))
+            {
+            <div class="task">
+                @task.Description
+                <div class="task-buttons">
+                    <a asp-controller="Home" asp-action="Update" asp-route-taskid="@task.taskid">Update</a>
+                    <a asp-controller="Home" asp-action="Delete" asp-route-taskid="@task.taskid">Delete</a>
+                    <a asp-controller="Home" asp-action="Complete" asp-route-taskid="@task.taskid">Complete</a>
+                </div>
+            </div>
+            }
+        </div>
+
+        <div class="col-sm-6 col-md-3">
+            <h4>Important but not Urgent</h4>
+            @foreach (var task in incompleteTasks.Where(t => t.Quadrant == 2))
+            {
+            <div class="task">
+                @task.Description
+                <div class="task-buttons">
+                    <a asp-controller="Home" asp-action="Update" asp-route-taskid="@task.taskid">Update</a>
+                    <a asp-controller="Home" asp-action="Delete" asp-route-taskid="@task.taskid">Delete</a>
+                    <a asp-controller="Home" asp-action="Complete" asp-route-taskid="@task.taskid">Complete</a>
+                </div>
+            </div>
+            }
+        </div>
+
+        <div class="col-sm-6 col-md-3">
+            <h4>Not Important but Urgent</h4>
+            @foreach (var task in incompleteTasks.Where(t => t.Quadrant == 3))
+            {
+            <div class="task">
+                @task.Description
+                <div class="task-buttons">
+                    <a asp-controller="Home" asp-action="Update" asp-route-taskid="@task.taskid">Update</a>
+                    <a asp-controller="Home" asp-action="Delete" asp-route-taskid="@task.taskid">Delete</a>
+                    <a asp-controller="Home" asp-action="Complete" asp-route-taskid="@task.taskid">Complete</a>
+                </div>
+            </div>
+            }
+        </div>
+
+        <div class="col-sm-6 col-md-3">
+            <h4>Not Important and Not Urgent</h4>
+            @foreach (var task in incompleteTasks.Where(t => t.Quadrant == 4))
+            {
+            <div class="task">
+                @task.Description
+                <div class="task-buttons">
+                    <a asp-controller="Home" asp-action="Update" asp-route-taskid="@task.taskid">Update</a>
+                    <a asp-controller="Home" asp-action="Delete" asp-route-taskid="@task.taskid">Delete</a>
+                    <a asp-controller="Home" asp-action="Complete" asp-route-taskid="@task.taskid">Complete</a>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</div>

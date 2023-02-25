@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Delete Task";
+}
+@model Task
+
+@*Make headers*@
+<h2>Confirm Deletion</h2>
+<h3>Are you sre you want to delete @Model.Title?</h3>
+
+@*Delete function*@
+<form method="post" asp-controller="Home" asp-action="Delete">
+    <button type="submit">Delete</button>
+    <a asp-controller="Home" asp-action="Quadrant" class="btn">Cancel</a>
+
+    <input type="hidden" asp-for="TaskID" />
+</form>
