@@ -4,18 +4,20 @@
 }
 
 @model Project2Mission8_S3G6.Models.Task
-<div>
-    <form method="post">
+<!--This is the form for adding and updating tasks.-->
+<div class=" container">
+    <form method="post" class="bg-light p-4 rounded-lg mx-auto" width="400px">
+        <h3> Add or Update Tasks Here</h3>
         <input asp-for="TaskId" type="hidden" /> <br />
 
         <label asp-for="TaskName"> Task</label>
-        <input asp-for="TaskName" />  <br />
+        <input asp-for="TaskName" class="form-control" />  <br />
 
         <label asp-for="DueDate"> Due Date</label>
-        <input asp-for="DueDate" />  <br />
+        <input asp-for="DueDate" class="form-control" />  <br />
 
         <label asp-for="Quadrant">Quadrant</label>
-        <select asp-for="Quadrant">
+        <select asp-for="Quadrant" class="form-group form-control">
             <option value=1>Quadrant 1</option>
             <option value=2>Quadrant 2</option>
             <option value=3>Quadrant 3</option>
@@ -23,7 +25,7 @@
         </select> <br />
 
         <label asp-for="CategoryId">Category</label>
-        <select asp-for="CategoryId">
+        <select asp-for="CategoryId" class="form-control">
             <option value="">Select an option</option>
             @foreach (Category c in ViewBag.Categories)
             {
@@ -32,14 +34,14 @@
         </select> <br />
 
         <label asp-for="Completed">Completed</label>
-        <select asp-for="Completed">
+        <select asp-for="Completed" class="form-group form-control">
+           
             <option value="true"> True</option>
             <option value="false"> False</option>
         </select>  <br />
 
         <button type="submit">Submit</button>
-        <br /><br />
-        <div asp-validation-summary="All"></div>
 
     </form>
+   
 </div>
