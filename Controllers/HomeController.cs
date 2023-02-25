@@ -7,77 +7,103 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Task = Project2Mission8_S3G6.Models.Task;
+using Tasks = Project2Mission8_S3G6.Models.Task;
 
 namespace Project2Mission8_S3G6.Controllers
 {
     public class HomeController : Controller
     {
-        private TaskContext blahContext { get; set; }
+        private TaskContext taskContext { get; set; }
 
-        public HomeController(TaskContext someName)
+        public HomeController(TaskContext tasks)
         {
-            blahContext = someName;
+            taskContext = tasks;
         }
+
         public IActionResult Index()
         {
             return View();
         }
+
         [HttpGet]
-        public IActionResult TaskInput()
+        public IActionResult AddTask()
         {
-            ViewBag.Categories = blahContext.Categories.ToList();
-            return View();
+            ViewBag.Categories = taskContext.Categories.ToList();
+            return View(new Tasks());
         }
+
         [HttpPost]
-        public IActionResult TaskInput(Task Response)
+        public IActionResult AddTask(Tasks task)
         {
             if (ModelState.IsValid)
             {
-                blahContext.Add(Response);
-                blahContext.SaveChanges();
-                return View("Quadrant", Response);
+                taskContext.Add(task);
+                taskContext.SaveChanges();
+                return RedirectToAction("Quadrant");
             }
             else //if invalid
             {
-                ViewBag.Categories = blahContext.Categories.ToList();
+                ViewBag.Categories = taskContext.Categories.ToList();
                 return View();
             }
         }
+
         [HttpGet]
         public IActionResult Quadrant()
         {
-            var taskList = blahContext.Responses.Include(x => x.Category);
+            var taskList = taskContext.Responses.Include(x => x.Category).ToList();
             return View(taskList);
         }
-        [HttpGet]
-        public IActionResult Edit(int TaskId)
-        {
-            ViewBag.Categories = blahContext.Categories.ToList();
-            var task = blahContext.Responses.Single(x => x.TaskId == TaskId);
-            return View("TaskInput", task);
 
+        [HttpGet]
+        public IActionResult Complete(int TaskId)
+        {
+            var task = taskContext.Responses.Single(x => x.TaskId == TaskId);
+            return View(task);
         }
 
-        public IActionResult Edit(Task blah)
+        [HttpPost]
+        public IActionResult Complete(Tasks task)
         {
-            blahContext.Update(blah);
-            blahContext.SaveChanges();
+            task = taskContext.Responses.Single(x => x.TaskId == task.TaskId);
+            task.Completed = true;
+            taskContext.Update(task);
+            taskContext.SaveChanges();
             return RedirectToAction("Quadrant");
         }
+
+        [HttpGet]
+        public IActionResult Edit (int TaskId)
+        {
+            ViewBag.Categories = taskContext.Categories.ToList();
+            var task = taskContext.Responses.Single(x => x.TaskId == TaskId);
+            return View("AddTask", task);
+
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Tasks task)
+        {
+            taskContext.Update(task);
+            taskContext.SaveChanges();
+            return RedirectToAction("Quadrant");
+        }
+
         [HttpGet]
         public IActionResult Delete(int TaskId)
         {
-            var task = blahContext.Responses.Single(x => x.TaskId == TaskId);
+            var task = taskContext.Responses.Single(x => x.TaskId == TaskId);
             return View(task);
         }
+
         [HttpPost]
-        public IActionResult Delete(Task Response)
+        public IActionResult Delete(Tasks task)
         {
-            blahContext.Responses.Remove(Response);
-            blahContext.SaveChanges();
+            taskContext.Responses.Remove(task);
+            taskContext.SaveChanges();
             return RedirectToAction("Quadrant");
         }
+
         public IActionResult Privacy()
         {
             return View();

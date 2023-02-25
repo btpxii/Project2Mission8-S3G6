@@ -18,6 +18,11 @@ a {
   border-color: #1861ac;
 }
 
+.quadrant {
+    border: 1px solid black;
+    padding: 10px;
+}
+
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #fff;
   background-color: #1b6ec2;

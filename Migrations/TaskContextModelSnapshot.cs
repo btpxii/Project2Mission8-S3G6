@@ -86,7 +86,7 @@ namespace Project2Mission8_S3G6.Migrations
                             CategoryId = 1,
                             Completed = false,
                             Quadrant = 3,
-                            TaskName = "do dishes"
+                            TaskName = "Do dishes"
                         },
                         new
                         {
@@ -94,7 +94,7 @@ namespace Project2Mission8_S3G6.Migrations
                             CategoryId = 1,
                             Completed = true,
                             Quadrant = 1,
-                            TaskName = "clean bathroom"
+                            TaskName = "Clean bathroom"
                         },
                         new
                         {
@@ -102,7 +102,7 @@ namespace Project2Mission8_S3G6.Migrations
                             CategoryId = 4,
                             Completed = false,
                             Quadrant = 2,
-                            TaskName = "ministring"
+                            TaskName = "Ministering"
                         });
                 });
 

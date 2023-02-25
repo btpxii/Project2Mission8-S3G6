@@ -14,6 +14,7 @@ namespace Project2Mission8_S3G6.Models
         public int TaskId { get; set;}
         [Required]
         public string TaskName { get; set; }
+        [DataType(DataType.Date)]
         public string DueDate { get; set; }
         [Required]
         public int Quadrant { get; set; }

@@ -31,7 +31,7 @@ namespace Project2Mission8_S3G6.Models
                 new Task
                 {
                     TaskId = 1,
-                    TaskName = "do dishes",
+                    TaskName = "Do dishes",
                     Quadrant = 3,
                     Completed = false,
                     CategoryId =1
@@ -39,7 +39,7 @@ namespace Project2Mission8_S3G6.Models
                 new Task
                 {
                     TaskId = 2,
-                    TaskName = "clean bathroom",
+                    TaskName = "Clean bathroom",
                     Quadrant = 1,
                     Completed = true,
                     CategoryId = 1
@@ -47,7 +47,7 @@ namespace Project2Mission8_S3G6.Models
                 new Task
                 {
                     TaskId = 3,
-                    TaskName = "ministring",
+                    TaskName = "Ministering",
                     Quadrant = 2,
                     Completed = false,
                     CategoryId = 4

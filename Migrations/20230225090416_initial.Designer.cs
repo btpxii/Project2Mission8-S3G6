@@ -8,8 +8,8 @@ using Project2Mission8_S3G6.Models;
 namespace Project2Mission8_S3G6.Migrations
 {
     [DbContext(typeof(TaskContext))]
-    [Migration("20230224231212_Initial")]
-    partial class Initial
+    [Migration("20230225090416_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -88,7 +88,7 @@ namespace Project2Mission8_S3G6.Migrations
                             CategoryId = 1,
                             Completed = false,
                             Quadrant = 3,
-                            TaskName = "do dishes"
+                            TaskName = "Do dishes"
                         },
                         new
                         {
@@ -96,7 +96,7 @@ namespace Project2Mission8_S3G6.Migrations
                             CategoryId = 1,
                             Completed = true,
                             Quadrant = 1,
-                            TaskName = "clean bathroom"
+                            TaskName = "Clean bathroom"
                         },
                         new
                         {
@@ -104,7 +104,7 @@ namespace Project2Mission8_S3G6.Migrations
                             CategoryId = 4,
                             Completed = false,
                             Quadrant = 2,
-                            TaskName = "ministring"
+                            TaskName = "Ministering"
                         });
                 });
 
