@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Project2Mission8_S3G6.Models
 {
+    // Builds "database in memory" for task and category classes, used to save to sqlite db
     public class TaskContext :DbContext
     {
         //constructor
@@ -16,7 +17,7 @@ namespace Project2Mission8_S3G6.Models
 
         public DbSet<Task> Responses { get; set;}
         public DbSet<Category> Categories { get; set; }
-
+        // Seeds db with records
         protected override void OnModelCreating(ModelBuilder mb)
         {
             mb.Entity<Category>().HasData(
@@ -25,7 +26,6 @@ namespace Project2Mission8_S3G6.Models
                 new Category { CategoryId = 3, CategoryName = "Work" },
                 new Category { CategoryId = 4, CategoryName = "Church" }
                 );
-
 
             mb.Entity<Task>().HasData(
                 new Task

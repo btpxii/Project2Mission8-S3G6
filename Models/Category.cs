@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Project2Mission8_S3G6.Models
 {
+    // Builds the Category class
     public class Category
     {
         [Key]

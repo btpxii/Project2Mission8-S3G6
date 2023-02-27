@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Project2Mission8_S3G6.Models
 {
+    // Builds the task class, with the category class linked as a foreign key
     public class Task
     {
         [Key]

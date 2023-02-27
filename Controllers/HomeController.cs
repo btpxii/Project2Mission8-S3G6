@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+// Had to do this because "Task" is a reserved word in ASP.NET
 using Tasks = Project2Mission8_S3G6.Models.Task;
 
 namespace Project2Mission8_S3G6.Controllers
@@ -14,17 +15,19 @@ namespace Project2Mission8_S3G6.Controllers
     public class HomeController : Controller
     {
         private TaskContext taskContext { get; set; }
-
+        // Construct HomeController with taskContext variable for sqlite db
         public HomeController(TaskContext tasks)
         {
             taskContext = tasks;
         }
-
+        
+        // Return home view
         public IActionResult Index()
         {
             return View();
         }
 
+        // Display add task page, with categories passed in to construct the categories dropdown
         [HttpGet]
         public IActionResult AddTask()
         {
@@ -32,6 +35,7 @@ namespace Project2Mission8_S3G6.Controllers
             return View(new Tasks());
         }
 
+        // Accept post requests from add tasks page, checks for validity before saving changes. If not valid, returns to get view with errors displayed
         [HttpPost]
         public IActionResult AddTask(Tasks task)
         {
@@ -48,6 +52,7 @@ namespace Project2Mission8_S3G6.Controllers
             }
         }
 
+        // Displays the quadrant view with all tasks in the database. Includes the categories table, joined on task.categoryId
         [HttpGet]
         public IActionResult Quadrant()
         {
@@ -55,6 +60,7 @@ namespace Project2Mission8_S3G6.Controllers
             return View(taskList);
         }
 
+        // Displays the Complete view, with the associated task passed in
         [HttpGet]
         public IActionResult Complete(int TaskId)
         {
@@ -62,6 +68,7 @@ namespace Project2Mission8_S3G6.Controllers
             return View(task);
         }
 
+        // Accepts post requests from Complete view, completing the user's desired task
         [HttpPost]
         public IActionResult Complete(Tasks task)
         {
@@ -72,6 +79,7 @@ namespace Project2Mission8_S3G6.Controllers
             return RedirectToAction("Quadrant");
         }
 
+        // Displays the Edit view, passing in the selected task
         [HttpGet]
         public IActionResult Edit (int TaskId)
         {
@@ -81,6 +89,7 @@ namespace Project2Mission8_S3G6.Controllers
 
         }
 
+        // Accepts post requests from the edit view, allowing a user to save their changes to a given task
         [HttpPost]
         public IActionResult Edit(Tasks task)
         {
@@ -89,6 +98,7 @@ namespace Project2Mission8_S3G6.Controllers
             return RedirectToAction("Quadrant");
         }
 
+        // Displays the delete page view, passing in the selected task
         [HttpGet]
         public IActionResult Delete(int TaskId)
         {
@@ -96,6 +106,7 @@ namespace Project2Mission8_S3G6.Controllers
             return View(task);
         }
 
+        // Accepts post requests from the Delete page view, allowing a user to delete a selected task
         [HttpPost]
         public IActionResult Delete(Tasks task)
         {
